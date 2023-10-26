@@ -1,0 +1,74 @@
+<ui:composition template="../template/templateGenerico.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">#{loginMB.conta.user}</ui:define>
+
+	<ui:define name="generico">
+
+		<div class="perfil">
+
+			<div>
+
+				<p:graphicImage name="#{fotoMB.localFotoPerfil(loginMB.conta.id)}"
+					library="img" class="imgPerfil"/>
+
+			</div>
+
+			<h1>conta: #{loginMB.conta.user}</h1>
+
+		</div>
+
+		<h:form>
+		
+		  <p:commandButton value="Editar Perfil" action="#{bean.editPerfil(loginMB.conta.id)}"/>
+
+			<p:commandButton action="#{loginMB.logout}" value="Logout" />
+
+		</h:form>
+
+		<h:link value="solicitações de amizade" outcome="solicitacoes.xhtml" style="font-size: 1.5em;"/>
+
+		<h2>Seus Posts</h2>
+
+		<h:form id="listaPost">
+
+			<p:dataList id="pag" var="p"
+				value="#{postMB.postsDaConta(loginMB.conta.id)}" paginator="true"
+				rows="5">
+
+				<div class="postsConta">
+
+					<div class="bloco">
+
+						<h1>#{p.assunto}</h1>
+						<p>#{p.conteudo}</p>
+
+					</div>
+
+					<div class="acoes">
+
+						<p:commandButton
+							rendered="#{p.idConta eq loginMB.conta.id ? 'true' : 'false'}"
+							value="Delete" actionListener="#{postMB.remover(p)}"
+							process="@this, listaPost" update="listaPost" />
+
+						<p:commandButton value="Ler Mais"
+							action="#{bean.pagPostSub(p.id)}" process="@this, listaPost" />
+
+						<p:commandButton value="Editar" action="#{bean.editPost(p.id)}" />
+
+					</div>
+
+				</div>
+
+			</p:dataList>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
