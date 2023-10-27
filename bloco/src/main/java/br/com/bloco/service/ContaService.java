@@ -18,6 +18,9 @@ public class ContaService implements Serializable{
 	public void salvar(Conta c) {
 		dao.inserirConta(c);
 	}
+	public void atualizar(Conta c, int id) {
+		dao.atualizaConta(c, id);
+	}
 	
 	public void remover(Conta c) {
 		dao.deletaConta(c);

@@ -53,7 +53,32 @@ public class DAOConta implements Serializable {
 			System.out.println("Erro ao inserir: " + e);
 		}
 	}
+	
+	public void atualizaConta(Conta conta, int id) {
+		String update = "UPDATE tbcontas SET usuario = ? WHERE idconta = ?";
+		String update2 = "UPDATE tbcomentarios SET autor= ? WHERE idconta = ?";
+		try {
 
+			Connection con = conectar();
+
+			PreparedStatement pst = con.prepareStatement(update);
+			PreparedStatement pst2 = con.prepareStatement(update2);
+
+			pst.setString(1, conta.getUser());
+			pst.setInt(2, id);
+			pst2.setString(1, conta.getUser());
+			pst2.setInt(2, id);
+
+			pst.executeUpdate();
+			pst2.executeUpdate();
+
+			con.close();
+
+		} catch (Exception e) {
+			System.out.println("Erro ao inserir: " + e);
+		}
+	}
+	
 	public ArrayList<Conta> listarContas() {
 		ArrayList<Conta> contas = new ArrayList<>();
 		String read = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas";

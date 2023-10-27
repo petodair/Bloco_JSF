@@ -17,5 +17,9 @@ public class FotoService implements Serializable {
 	public FotoPerfil localFotoPerfil(int idConta) {
 		return dao.carregaFotoPerfil(idConta);
 	}
-
+	
+	public void escolherFoto(FotoPerfil f) {
+		dao = new DAOFoto();
+		dao.insereFoto(f);
+	}
 }

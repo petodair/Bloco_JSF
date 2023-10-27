@@ -44,14 +44,52 @@ public class DAOFoto implements Serializable{
 				foto.setIdConta(rs.getInt(2));
 				foto.setPasta(rs.getString(3));
 				foto.setNome(rs.getString(4));
+				con.close();
 				return foto;
 			}else {
+			con.close();
 			return null;
 			}
 			} catch (Exception e) {
 				System.out.println(e);
 				return null;
 			}
+	}
+	
+	public void insereFoto(FotoPerfil f) {
+		if(carregaFotoPerfil(f.getIdConta()) == null) {
+			String read = "INSERT INTO tbfotoperfil(idconta, pasta, nome) VALUES(?,?,?)";
+			try {
+				Connection con = conectar();
+				PreparedStatement pst = con.prepareStatement(read);
+				
+				pst.setInt(1, f.getIdConta());
+				pst.setString(2, f.getPasta());
+				pst.setString(3, f.getNome());
+				
+				pst.executeUpdate();
+				
+				con.close();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		} else {
+			String read = "UPDATE tbfotoperfil SET pasta = ?, nome = ? WHERE idconta = ?";
+			try {
+				Connection con = conectar();
+				PreparedStatement pst = con.prepareStatement(read);	
+				
+				pst.setString(1, f.getPasta());
+				pst.setString(2, f.getNome());
+				pst.setInt(3, f.getIdConta());
+				
+				pst.executeUpdate();
+				
+				con.close();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package br.com.bloco.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class ContaMB implements Serializable{
 	
 	@Inject
 	private ContaService service;
+	
+	@Inject
+	private FotoMB fotoMB;
+	
+	@Inject
+	private LoginMB loginMB;
 	
 	private String pesquisa;
 	
@@ -50,6 +57,19 @@ public class ContaMB implements Serializable{
 		} catch (Exception e) {
 			System.out.println(e);
 		}		
+	}
+	
+	public void atualizar(Conta c,int id, String f) {
+		service.atualizar(c, id);
+		System.out.println(c.getUser());
+		loginMB.setUser(c.getUser());
+		System.out.println(loginMB.getUser());
+		fotoMB.mudarFoto(f, id);	
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("conta.xhtml");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 	
 	public void remover() {		

@@ -21,7 +21,7 @@ public class FotoMB implements Serializable {
 	@Inject
 	private FotoPerfil fotoPerfil;
 	
-	private String fotoDefault = null;
+	private String fotoDefault;
 	
 	public String localFotoPerfil(int idconta) {
 		String endereco;
@@ -35,32 +35,54 @@ public class FotoMB implements Serializable {
 	}
 	
 	public String defaultSelect(String foto) {
-		if (foto != null) {
-			if(foto == "Foto1") {
-				return "/profile/default/gojo.png";
-			} else if(foto == "Foto2") {
-				return "/profile/default/aluno.jpg";
-			} else if(foto == "Foto3") {
-				return "/profile/default/aluno2.jpg";
-			} else if(foto == "Foto4") {
-				return "/profile/default/deku.jpg";
-			} else if(foto == "Foto5") {
-				return "/profile/default/espetado.jpg";
-			} else if(foto == "Foto6") {
-				return "/profile/default/L.jpg";
+		
+			if(foto.equals("Foto1")) {
+				return "profile/default/gojo.png";
+			} else if(foto.equals("Foto2")) {
+				return "profile/default/aluno.jpg";
+			} else if(foto.equals("Foto3")) {
+				return "profile/default/aluno2.jpg";
+			} else if(foto.equals("Foto4")) {
+				return "profile/default/deku.jpg";
+			} else if(foto.equals("Foto5")) {
+				return "profile/default/espetado.jpg";
+			} else if(foto.equals("Foto6")) {
+				return "profile/default/L.jpg";
 			} else {
 				return null;
 			}
-		} else {
-			return null;
-		}
-	}
+		} 
 	
-	public void mudarFoto() {		
-		System.out.println(fotoDefault + " = saida do radio");
-		System.out.println("-------------------------");
-		System.out.println(defaultSelect(fotoDefault) + " = aparecer no form");
-		System.out.println("-------------------------");	
+	
+	public void mudarFoto(String f, int id) {
+		
+		fotoPerfil = new FotoPerfil();
+		service = new FotoService();
+		  fotoPerfil.setIdConta(id);
+		if(f.equals("Foto1")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("gojo.png");
+		} else if(f.equals("Foto2")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("aluno.jpg");
+		} else if(f.equals("Foto3")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("aluno2.jpg");
+		} else if(f.equals("Foto4")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("deku.jpg");
+		} else if(f.equals("Foto5")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("espetado.jpg");
+		} else if(f.equals("Foto6")) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("L.jpg");
+		} else if(f.equals(null)) {
+			fotoPerfil.setPasta("default");
+			fotoPerfil.setNome("gojo.png");
+		}
+		
+		service.escolherFoto(fotoPerfil);
 	}
 
 	public FotoPerfil getFotoPerfil() {
