@@ -60,10 +60,6 @@ public class ContaMB implements Serializable{
 	}
 	
 	public void atualizar(Conta c,int id, String f) {
-		service.atualizar(c, id);
-		System.out.println(c.getUser());
-		loginMB.setUser(c.getUser());
-		System.out.println(loginMB.getUser());
 		fotoMB.mudarFoto(f, id);	
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("conta.xhtml");

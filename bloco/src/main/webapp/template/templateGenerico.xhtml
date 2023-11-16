@@ -6,41 +6,44 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<h:outputStylesheet library="css" name="style.css"/>
-<title><ui:insert name="title"></ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 <h:body>
 
-  <header>
-  <div class="logo">
-   <h:link outcome="/home.xhtml">
-      <h:graphicImage library="img" name="logo.png" width="150"/>
-      </h:link>
-      </div>
-      <div>
-      <p:menubar
-			style="background-color: #86baf9 !important; position: relative; bottom:4px; border:none;">
-			<p:menuitem value="Home" style="margin-right: 15px;" outcome="/home.xhtml"/>
-			<p:menuitem value="Pesquisar" style="margin-right: 15px;" outcome="/pesquisar.xhtml"/>
-			<p:menuitem value="Temas" style="margin-right: 15px;" />
-			<p:menuitem value="Loja" style="margin-right: 15px;" />
-			<p:submenu label="Conta" style="margin-right: 15px;">
-				<p:menuitem value="#{loginMB.conta eq null ? 'Login' : 'Conta'}" outcome=
-				"#{loginMB.conta eq null ? 'login.xhtml' : '/restricted/conta.xhtml'}"/>
-				<p:menuitem value="Amigos" outcome="/restricted/amigos.xhtml"/>
-				<p:menuitem value="Notificações" />
-				<p:menuitem value="Personalizar" />
-			</p:submenu>
-		</p:menubar>
+	<header>
+		<div class="logo">
+			<h:link outcome="/home.xhtml">
+				<h:graphicImage library="img" name="logo.png" width="150" />
+			</h:link>
 		</div>
-  </header>
-  
-  <ui:insert name="generico"/>
-  
-  <footer>
-      <H2>RODAPÉ ============= RODAPÉ</H2>
-  </footer>
+		<div>
+			<p:menubar
+				style="background-color: #86baf9 !important; position: relative; bottom:4px; border:none;">
+				<p:menuitem value="Home" style="margin-right: 15px;"
+					outcome="/home.xhtml" />
+				<p:menuitem value="Pesquisar" style="margin-right: 15px;"
+					outcome="/pesquisar.xhtml" />
+				<p:menuitem value="Temas" style="margin-right: 15px;" />
+				<p:menuitem value="Loja" style="margin-right: 15px;" />
+				<p:submenu label="Conta" style="margin-right: 15px;">
+					<p:menuitem value="#{loginMB.conta eq null ? 'Login' : 'Conta'}"
+						outcome="#{loginMB.conta eq null ? 'login.xhtml' : '/restricted/conta.xhtml'}" />
+					<p:menuitem value="Amigos" outcome="/restricted/amigos.xhtml" />
+					<p:menuitem value="Notificações" />
+					<p:menuitem value="Personalizar" />
+				</p:submenu>
+			</p:menubar>
+		</div>
+	</header>
+
+	<ui:insert name="generico" />
+
+	<footer>
+		<H2>RODAPÉ ============= RODAPÉ</H2>
+	</footer>
 
 </h:body>
 </html>

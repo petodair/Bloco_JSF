@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body {
 	font-size: 12px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -45,10 +46,8 @@ footer {
 
 .bloco {
 	background-color: #86dff9;
-	min-width: 100px;
-	max-width: 300px;
-	min-height: 100px;
-	max-height: 300px;
+	width: 200px;
+	height: 300px;
 	margin-left: 20px;
 	margin-top: 20px;
 	
@@ -79,10 +78,8 @@ footer {
 	border-radius: 7px;
 	color: blue;
 	background-color: lightgreen;
-	min-width: 100px;
-	max-width: 300px;
-	min-height: 100px;
-	max-height: 300px;
+	width: 400px;
+	height: 400px;
 	margin-bottom: 30px;
 }
 
