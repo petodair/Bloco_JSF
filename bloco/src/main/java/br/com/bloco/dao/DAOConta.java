@@ -33,7 +33,7 @@ public class DAOConta implements Serializable {
 
 	public void inserirConta(Conta conta) {
 
-		String novaConta = "INSERT INTO tbcontas(usuario, email, senha, tipo) values (?,?,?,?)";
+		String novaConta = "INSERT INTO tbcontas(usuario, email, senha, tipo, xp, lvl) values (?,?,?,?,?,?)";
 		try {
 
 			Connection con = conectar();
@@ -44,6 +44,8 @@ public class DAOConta implements Serializable {
 			pst.setString(2, conta.getEmail());
 			pst.setString(3, conta.getSenha());
 			pst.setString(4, "normal");
+			pst.setInt(5, 0);
+			pst.setInt(6, 1);
 
 			pst.executeUpdate();
 
@@ -81,7 +83,7 @@ public class DAOConta implements Serializable {
 	
 	public ArrayList<Conta> listarContas() {
 		ArrayList<Conta> contas = new ArrayList<>();
-		String read = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas";
+		String read = "SELECT idconta, usuario, email, senha, tipo, xp, lvl FROM tbcontas";
 
 		try {
 			Connection con = conectar();
@@ -95,8 +97,10 @@ public class DAOConta implements Serializable {
 				String email = rs.getString(3);
 				String senha = rs.getString(4);
 				String tipo = rs.getString(5);
+				int xp = rs.getInt(6);
+				int lvl = rs.getInt(7);
 
-				contas.add(new Conta(id, usuario, email, senha, tipo));
+				contas.add(new Conta(id, usuario, email, senha, tipo, xp, lvl));
 			}
 			con.close();
 			return contas;
@@ -107,7 +111,7 @@ public class DAOConta implements Serializable {
 	}
 	
 	public Conta selecionaConta(int id) {
-		String read2 = "select idconta, usuario, email, senha, tipo FROM tbcontas where idconta = ?";
+		String read2 = "select idconta, usuario, email, senha, tipo, xp, lvl FROM tbcontas where idconta = ?";
 		Conta conta = new Conta();
 		try {
 			Connection con = conectar();
@@ -121,6 +125,8 @@ public class DAOConta implements Serializable {
 				conta.setEmail(rs.getString(3));
 				conta.setSenha(rs.getString(4));
 				conta.setTipo(rs.getString(5));
+				conta.setXp(rs.getInt(6));
+				conta.setLvl(rs.getInt(7));
 			}
 
 			con.close();
@@ -133,7 +139,7 @@ public class DAOConta implements Serializable {
 	
 	public ArrayList<Conta> pesquisarContas(String nome) {
 		ArrayList<Conta> contas = new ArrayList<>();
-		String read = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas WHERE usuario = ?";
+		String read = "SELECT idconta, usuario, email, senha, tipo, xp, lvl FROM tbcontas WHERE usuario = ?";
 
 		try {
 			Connection con = conectar();
@@ -148,8 +154,10 @@ public class DAOConta implements Serializable {
 				String email = rs.getString(3);
 				String senha = rs.getString(4);
 				String tipo = rs.getString(5);
+				int xp = rs.getInt(6);
+				int lvl = rs.getInt(7);
 
-				contas.add(new Conta(id, usuario, email, senha, tipo));
+				contas.add(new Conta(id, usuario, email, senha, tipo, xp, lvl));
 			}
 			con.close();
 			return contas;
@@ -183,7 +191,7 @@ public class DAOConta implements Serializable {
 	
 	public boolean checaConta(Conta conta) {
 		
-		String read = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas WHERE usuario = ? and senha = ?";
+		String read = "SELECT idconta, usuario, email, senha, tipo, xp, lvl FROM tbcontas WHERE usuario = ? and senha = ?";
 		
 		try {
 			
@@ -200,6 +208,8 @@ public class DAOConta implements Serializable {
 				conta.setUser(rs.getString(2));
 				conta.setEmail(rs.getString(3));
 				conta.setTipo(rs.getString(5));
+				conta.setXp(rs.getInt(6));
+				conta.setLvl(rs.getInt(7));
 				
 				return true;
 			}

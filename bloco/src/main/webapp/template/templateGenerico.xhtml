@@ -34,6 +34,7 @@
 					<p:menuitem value="Amigos" outcome="/restricted/amigos.xhtml" />
 					<p:menuitem value="Notificações" />
 					<p:menuitem value="Personalizar" />
+					<p:menuitem value="Quests" rendered="#{loginMB.conta eq null ? 'false' : 'true'}"/>
 				</p:submenu>
 			</p:menubar>
 		</div>

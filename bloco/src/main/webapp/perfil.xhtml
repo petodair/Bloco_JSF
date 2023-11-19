@@ -18,7 +18,18 @@
 
 			</div>
 
-			<h1>#{bean.conta.user}</h1>
+			<div style="display: block;">
+
+				<h1>conta: #{bean.conta.user}</h1>
+
+				<h3 style="color-text: green;">Level 1: Iniciante</h3>
+
+				<p:progressBar value="1" labelTemplate="{value}/100 xp"
+					displayOnly="true" />
+
+			</div>
+			
+			
 
 		</div>
 

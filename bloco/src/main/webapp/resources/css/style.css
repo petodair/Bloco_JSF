@@ -80,10 +80,10 @@ footer {
 	color: blue;
 	background-color: lightgreen;
 	min-width: 100px;
-	max-width: 300px;
+	max-width: 400px;
 	min-height: 100px;
-	max-height: 300px;
 	margin-bottom: 30px;
+	word-wrap: break-word;
 }
 
 .pesquisaConta {

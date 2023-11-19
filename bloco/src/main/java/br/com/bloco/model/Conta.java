@@ -12,18 +12,24 @@ public class Conta implements Serializable, Base{
 	private String email;
 	private String senha;
 	private String tipo;
+	private int xp;
+	private int lvl;
 	
 	public Conta() {
 		super();
 	}
-	public Conta(int id, String user, String email, String senha, String tipo) {
+	
+	public Conta(int id, String user, String email, String senha, String tipo, int xp, int lvl) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.email = email;
 		this.senha = senha;
 		this.tipo = tipo;
+		this.xp = xp;
+		this.lvl = lvl;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -55,6 +61,18 @@ public class Conta implements Serializable, Base{
 		this.tipo = tipo;
 	}
 	
+	public int getXp() {
+		return xp;
+	}
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+	public int getLvl() {
+		return lvl;
+	}
+	public void setLvl(int lvl) {
+		this.lvl = lvl;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

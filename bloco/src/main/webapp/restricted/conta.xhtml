@@ -14,23 +14,37 @@
 			<div>
 
 				<p:graphicImage name="#{fotoMB.localFotoPerfil(loginMB.conta.id)}"
-					library="img" class="imgPerfil"/>
+					library="img" class="imgPerfil" />
 
 			</div>
 
-			<h1>conta: #{loginMB.conta.user}</h1>
+			<div style="display: block;">
+			
+			#{loginMB.conta.lvl}
+
+				<h1>conta: #{loginMB.conta.user}</h1>
+
+				<h3 style="color-text: green;">#{loginMB.levelAtual()}</h3>
+
+				<p:progressBar value="#{loginMB.xpBarra()}" labelTemplate="#{loginMB.conta.xp}/#{loginMB.xpMaximo()} xp"
+					displayOnly="true" />
+
+			</div>
 
 		</div>
 
+
 		<h:form>
-		
-		  <p:commandButton value="Editar Perfil" action="#{bean.editPerfil(loginMB.conta.id)}"/>
+
+			<p:commandButton value="Editar Perfil"
+				action="#{bean.editPerfil(loginMB.conta.id)}" />
 
 			<p:commandButton action="#{loginMB.logout}" value="Logout" />
 
 		</h:form>
 
-		<h:link value="solicitações de amizade" outcome="solicitacoes.xhtml" style="font-size: 1.5em;"/>
+		<h:link value="solicitações de amizade" outcome="solicitacoes.xhtml"
+			style="font-size: 1.5em;" />
 
 		<h2>Seus Posts</h2>
 

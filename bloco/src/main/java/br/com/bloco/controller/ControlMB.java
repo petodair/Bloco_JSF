@@ -68,6 +68,19 @@ public class ControlMB implements Serializable {
 		}
 	}
 	
+	public int xpAtual() {
+		if(conta != null) {
+			if(conta.getLvl() == 1) {
+				return conta.getXp();
+			} else if(conta.getLvl() == 2) {
+				return conta.getXp() - 100;
+			} else {
+				return 0;
+			} } else {
+				return 0;
+			}
+		}
+	
 	public void mudarFoto() {
 	System.out.println(fotoDefault + " = saida do radio");
 	System.out.println("-------------------------");
