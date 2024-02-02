@@ -87,6 +87,7 @@ public class DAOCurtida implements Serializable {
 
 		String read = null;
 		String read2 = null;
+		DAONotificacao dao = new DAONotificacao();
 
 		try {
 			Connection con = conectar();
@@ -124,6 +125,10 @@ public class DAOCurtida implements Serializable {
 				pst2.setInt(2, idConta);
 				pst2.setBoolean(3, true);
 				pst2.setInt(4, idPost);
+				
+				int id
+				
+				dao.inserirNotificaçãoLike(idConta, idConta, idComentario);
 			}
 
 			pst.executeUpdate();

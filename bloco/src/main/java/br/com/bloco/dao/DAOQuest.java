@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import br.com.bloco.model.Conta;
 import br.com.bloco.model.Quest;
 
 public class DAOQuest implements Serializable {
@@ -32,7 +31,7 @@ public class DAOQuest implements Serializable {
 		}
 	}
 	
-	public void inserirConta(Quest quest) {
+	public void inserirQuests(Quest quest) {
 
 		String novaQuest = "INSERT INTO tbquests(nome, detalhes, lvl, xp, ativa) values(?,?,?,?,?)";
 		try {

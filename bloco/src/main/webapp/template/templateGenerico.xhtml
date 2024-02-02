@@ -8,7 +8,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="style1.css"/>
 	<title><ui:insert name="title"></ui:insert></title>
 </h:head>
 <h:body>
@@ -34,7 +34,8 @@
 					<p:menuitem value="Amigos" outcome="/restricted/amigos.xhtml" />
 					<p:menuitem value="Notificações" />
 					<p:menuitem value="Personalizar" />
-					<p:menuitem value="Quests" rendered="#{loginMB.conta eq null ? 'false' : 'true'}"/>
+					<p:menuitem value="Quests" rendered="#{loginMB.conta eq null ? 'false' : 'true'}" 
+					outcome="/restricted/quests.xhtml"/>
 				</p:submenu>
 			</p:menubar>
 		</div>
